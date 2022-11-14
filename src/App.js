@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import { Data } from "./Data";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+  const dataShow = Data.map((el,index) => (
+    <Card 
+      key={index}
+      
+      img={el.img}
+      title={el.title}
+      desc={el.desc}
+      price={el.price}
+      rate={el.rate}
+    />
+  ));
+
+  return <div style={{display:"flex",justifyContent:"space-around",textAlign:"center",flexWrap:"wrap"}}>{dataShow}</div>
+  ;
 }
-
-export default App;
