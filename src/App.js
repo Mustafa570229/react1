@@ -1,19 +1,26 @@
-import Card from "./components/Card";
-import { Data } from "./Data";
+import React from "react";
 
 export default function App() {
-  const dataShow = Data.map((el,index) => (
-    <Card 
-      key={index}
-      
-      img={el.img}
-      title={el.title}
-      desc={el.desc}
-      price={el.price}
-      rate={el.rate}
-    />
-  ));
+  const [variable, changeFun] = React.useState(true);
+  function toggle() {
+    changeFun((prev) => !prev);
+  }
 
-  return <div style={{display:"flex",justifyContent:"space-around",textAlign:"center",flexWrap:"wrap"}}>{dataShow}</div>
-  ;
+  return (
+    <div
+      style={{
+        fontSize: "40px",
+        textAlign: "center",
+
+        cursor: "pointer",
+      }}
+      onClick={toggle}
+    >
+      {variable ? (
+        <i class="fa-regular fa-star"></i>
+      ) : (
+        <i className="fa-solid fa-star" style={{ color: "yellowgreen" }}></i>
+      )}
+    </div>
+  );
 }
